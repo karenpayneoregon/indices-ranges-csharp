@@ -7,8 +7,8 @@ class GenericHelpers
         list.Select((element, index) => new ElementContainer<T>
         {
             Value = element,
-            StartIndex = new Index(index),
-            EndIndex = new Index(list.Count - index - 1, true),
+            StartIndex = new(index),
+            EndIndex = new(list.Count - index - 1, true),
             Index = index + 1
         }).ToList();
 }
