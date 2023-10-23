@@ -8,7 +8,7 @@ class GenericHelpers
         {
             Value = element,
             StartIndex = new Index(index),
-            EndIndex = new Index(Enumerable.Range(0, list.Count).Reverse().ToList()[index], true),
+            EndIndex = new Index(list.Count - index - 1, true),
             Index = index + 1
         }).ToList();
 }
