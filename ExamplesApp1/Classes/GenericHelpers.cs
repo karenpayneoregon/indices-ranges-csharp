@@ -11,5 +11,13 @@ class GenericHelpers
             EndIndex = new(list.Count - index - 1, true),
             Index = index + 1
         }).ToList();
-}
 
+    public static List<DictionaryContainer<K,V>> RangeDetails<K,V>(Dictionary<K,V> list) =>
+        list.Select((element, index) => new DictionaryContainer<K,V>
+        {
+            Value = element,
+            StartIndex = new(index),
+            EndIndex = new(list.Count - index - 1, true),
+            Index = index + 1
+        }).ToList();
+}

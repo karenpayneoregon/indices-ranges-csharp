@@ -1,10 +1,22 @@
 ﻿using ExamplesApp1.Classes;
+using ExamplesApp1.Models;
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
 namespace ExamplesApp1;
 internal partial class Program
 {
+    private static List<Person> PeopleList()
+    {
+        List<Person> people = new()
+        {
+            new() { Id = 1, FirstName = "Jim", LastName = "Gallagher" },
+            new() { Id = 2, FirstName = "Clare", LastName = "Gallagher" },
+            new() { Id = 3, FirstName = "Mary", LastName = "Gallagher" }
+        };
+
+        return people;
+    }
     [ModuleInitializer]
     public static void Init()
     {

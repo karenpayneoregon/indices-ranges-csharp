@@ -9,6 +9,8 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        DictionaryIndexing();
+        Console.WriteLine();
         MonthsIndexing();
         Console.WriteLine();
         PersonIndexing();
@@ -31,19 +33,30 @@ internal partial class Program
     {
         Print();
 
-        List<Person> people = new()
-        {
-            new() { Id = 1, FirstName = "Jim", LastName = "Gallagher"},
-            new () { Id = 2, FirstName = "Clare", LastName = "Gallagher"},
-            new () { Id = 3, FirstName = "Mary", LastName = "Gallagher"}
-        };
-
-        List<ElementContainer<Person>> personContainer = RangeDetails(people);
+        List<ElementContainer<Person>> personContainer = RangeDetails(PeopleList());
 
         Console.WriteLine($"Id  Person                    Index  Start  End");
         foreach (var item in personContainer)
         {
             Console.WriteLine($"{item.Value,-10} {item.Index,-4} {item.StartIndex,3} {item.EndIndex,7}");
         }
+    }
+
+    private static void DictionaryIndexing()
+    {
+        Print();
+
+        var dictionary =
+            PeopleList()
+                .ToDictionary(
+                    keySelector: p => p.Id, 
+                    elementSelector: p => p);
+
+        var personContainer = RangeDetails(dictionary);
+        foreach (var item in personContainer)
+        {
+            Console.WriteLine($"{item.Value.Value,-10} {item.Index,-4} {item.StartIndex,3} {item.EndIndex,7}");
+        }
+
     }
 }
